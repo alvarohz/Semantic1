@@ -17,7 +17,7 @@ simbolo *t;
 %left '*'
 %%
 prog: 		
-	prog asig '\n'	{ printf("Asignacione(s) efectuada(s)\n");}
+	prog asig '\n'		{ printf("Asignacione(s) efectuada(s)\n");}
 	| prog expr '\n'	{ printf("%d\n",$2);}
 	| prog error '\n' 	{ yyerrok;}
 	|			{;}
@@ -43,7 +43,7 @@ void yyerror(char *s)
 {
 	extern int yylineno;	// predefinida en lex.c
 	extern char *yytext;	// predefinida en lex.c
-printf("ERROR: %s en simbolo \"%s\" en linea %d \n",s,yytext,yylineno); 
+	printf("ERROR: %s en simbolo \"%s\" en linea %d \n",s,yytext,yylineno); 
 }
 void main()
 { 

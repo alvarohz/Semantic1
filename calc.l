@@ -12,14 +12,15 @@ extern simbolo *t;
 		}
 [-+()=/*] 	{ return *yytext; }	/* operadores */ 
 [a-zA-Z][a-zA-Z0-9]*	{
-		     yylval.ptr_simbolo = (simbolo *)buscar(t,yytext);
-		     if (yylval.ptr_simbolo == NULL)
-		     {
-	yylval.ptr_simbolo=(simbolo *) malloc(sizeof(simbolo));
-	strcpy(yylval.ptr_simbolo->nombre, yytext);
-	yylval.ptr_simbolo->valor=0;
-	insertar(&t, yylval.ptr_simbolo);
-		     }									   return ID;
+			     yylval.ptr_simbolo = (simbolo *)buscar(t,yytext);
+			     if (yylval.ptr_simbolo == NULL)
+			     {
+				yylval.ptr_simbolo=(simbolo *) malloc(sizeof(simbolo));
+				strcpy(yylval.ptr_simbolo->nombre, yytext);
+				yylval.ptr_simbolo->valor=0;
+				insertar(&t, yylval.ptr_simbolo);
+		     	     }
+	        	     return ID;
 			}
 [ \t]       	; /* espacios en blanco */
 [\n]		{yylineno++;return *yytext;}
